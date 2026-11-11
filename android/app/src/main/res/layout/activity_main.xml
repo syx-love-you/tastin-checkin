@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAFAFA"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="塔斯汀签到"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="#C42D24" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="本机自动签到 · 数据只存在你的手机"
+            android:textSize="13sp"
+            android:textColor="#888888" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="User Token"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:textColor="#444444" />
+
+        <Button
+            android:id="@+id/btnScan"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:text="扫码获取（推荐）"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/btn_primary" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="电脑上抓到 token 后生成二维码，手机扫一下即可自动填入"
+            android:textSize="12sp"
+            android:textColor="#999999" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:background="#EEEEEE" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="当前 token"
+            android:textSize="12sp"
+            android:textColor="#888888" />
+
+        <EditText
+            android:id="@+id/etToken"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:hint="扫码自动填入，或长按空白处粘贴"
+            android:textSize="12sp"
+            android:textColor="#666666"
+            android:inputType="textNoSuggestions"
+            android:maxLines="4"
+            android:minHeight="72dp"
+            android:gravity="top|start"
+            android:background="@drawable/input_bg"
+            android:padding="12dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="🔒 支持扫码或长按粘贴，不支持手动输入"
+            android:textSize="12sp"
+            android:textColor="#888888" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="每天签到时间"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:textColor="#444444" />
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/input_bg"
+            android:gravity="center_vertical"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:text="07:00"
+            android:textSize="20sp"
+            android:textColor="#333333" />
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="24dp"
+            android:text="保存并启用定时签到"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/btn_primary" />
+
+        <Button
+            android:id="@+id/btnRunNow"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="12dp"
+            android:text="立即签到一次"
+            android:textSize="16sp"
+            android:textColor="#C42D24"
+            android:background="@drawable/btn_secondary" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="状态"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#444444" />
+
+            <TextView
+                android:id="@+id/tvLogBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="14dp"
+                android:paddingEnd="4dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:text="日志 ›"
+                android:textSize="13sp"
+                android:textColor="#C42D24" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/input_bg"
+            android:padding="14dp"
+            android:text="尚未配置"
+            android:textSize="14sp"
+            android:textColor="#333333"
+            android:lineSpacingExtra="4dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:text="token 只保存在本机 SharedPreferences，不会上传到任何服务器。抓包方法见 README。"
+            android:textSize="12sp"
+            android:textColor="#999999"
+            android:lineSpacingExtra="3dp" />
+
+        <TextView
+            android:id="@+id/tvHelpToggle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/input_bg"
+            android:padding="14dp"
+            android:text="第一次用？点这里看怎么获取 token ▾"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:textColor="#C42D24" />
+
+        <TextView
+            android:id="@+id/tvVersion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="版本 1.4 · 点此检查更新"
+            android:textSize="12sp"
+            android:textColor="#999999" />
+
+        <TextView
+            android:id="@+id/tvHelp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@drawable/input_bg"
+            android:padding="14dp"
+            android:visibility="gone"
+            android:textColor="#444444"
+            android:textSize="13sp"
+            android:lineSpacingExtra="5dp" />
+
+    </LinearLayout>
+</ScrollView>

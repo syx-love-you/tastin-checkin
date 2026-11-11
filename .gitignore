@@ -1,0 +1,33 @@
+# Local credentials and runtime data
+config.json
+二维码.html
+android/local.properties
+android/app/keystore/
+*.jks
+*.keystore
+keystore.properties
+
+# Build outputs and binaries
+.gradle/
+**/build/
+*.apk
+*.aab
+*.exe
+*.dll
+*.so
+*.dylib
+*.class
+*.log
+
+# IDE and OS files
+.idea/
+*.iml
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Keep source docs, but not generated distribution binaries or duplicate manifests
+apk/
+release/**/*.apk
+release/**/*.exe
+release/github/update.json

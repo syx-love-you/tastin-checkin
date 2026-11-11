@@ -1,0 +1,69 @@
+plugins {
+    id 'com.android.application'
+}
+
+// 签名配置从 local.properties 读（不进版本库），没有就退到 keystore.properties，再没有就用占位值
+def localProps = new Properties()
+def localPropsFile = rootProject.file("local.properties")
+if (localPropsFile.exists()) {
+    localPropsFile.withInputStream { localProps.load(it) }
+}
+
+android {
+    namespace 'com.tastin.checkin'
+    compileSdk 34
+
+    // 更新清单地址从 gradle.properties 读，方便改而不用动代码
+    def updateUrl = project.findProperty("TASTIN_UPDATE_URL")
+            ?: "https://raw.githubusercontent.com/CHANGE_ME/tastin-checkin/main/update.json"
+    def updateFallback = project.findProperty("TASTIN_UPDATE_URL_FALLBACK") ?: ""
+
+    defaultConfig {
+        applicationId "com.tastin.checkin"
+        minSdk 24
+        targetSdk 34
+        versionCode 9
+        versionName "1.0"
+
+        buildConfigField "String", "UPDATE_MANIFEST_URL", "\"${updateUrl}\""
+        buildConfigField "String", "UPDATE_MANIFEST_FALLBACK", "\"${updateFallback}\""
+    }
+
+    buildFeatures {
+        buildConfig true
+    }
+
+    signingConfigs {
+        release {
+            storeFile file(localProps.getProperty("TASTIN_KEYSTORE", "keystore/release.jks"))
+            storePassword localProps.getProperty("TASTIN_STORE_PASSWORD", "")
+            keyAlias localProps.getProperty("TASTIN_KEY_ALIAS", "tastin")
+            keyPassword localProps.getProperty("TASTIN_KEY_PASSWORD", "")
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.release
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    lint {
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
+}

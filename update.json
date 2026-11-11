@@ -1,0 +1,8 @@
+{
+  "versionCode": 9,
+  "versionName": "1.0",
+  "apkUrl": "https://github.com/syx-love-you/tastin-checkin/releases/download/v1.0/tastin-checkin-1.0.apk",
+  "sha256": "de3d59d510ec27e89bd146294a445f8f401ec7e578fb92bbf04a99c279debec6",
+  "notes": "整理为 v1.0，并更新新手获取 token 引导",
+  "force": false
+}
